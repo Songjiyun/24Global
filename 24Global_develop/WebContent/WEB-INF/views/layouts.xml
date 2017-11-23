@@ -19,6 +19,7 @@
 	<!-- 시세알림서비스 -->
 	<definition name="marketPrice.tiles" extends="index.tiles">
 		<put-attribute name="main" value="/WEB-INF/views/MarketPrice/MarketPrice.jsp" />
+		<put-attribute name="jsAria" value="/WEB-INF/views/MarketPrice/jsAria.jsp" /> 
 	</definition>
 	
 	<!-- 커뮤니티 -->
