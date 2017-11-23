@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="kakao.tiles" template="/WEB-INF/views/kakao/kakao.jsp">
+	</definition>
+
+	<!-- 메인화면(메인 레이아웃이라고 할 수 있다.) -->
+	<definition name="index.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="sidebar" value="/WEB-INF/views/common/sidebar.jsp" />
+		<put-attribute name="topbar" value="/WEB-INF/views/common/topbar.jsp" />
+		<put-attribute name="chatbar" value="/WEB-INF/views/common/chatbar.jsp" />
+		<put-attribute name="jsAria" value="/WEB-INF/views/index/jsAria.jsp" />
+		<put-attribute name="main" value="/WEB-INF/views/index/main.jsp" />
+	</definition>
+	
+	<!-- 시세알림서비스 -->
+	<definition name="marketPrice.tiles" extends="index.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/MarketPrice/MarketPrice.jsp" />
+	</definition>
+	
+	<!-- 커뮤니티 -->
+	<definition name="Comunity.tiles" extends="index.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/Comunity/Comunity.jsp" />
+	</definition>
+
+
+</tiles-definitions>
+
+
