@@ -105,12 +105,25 @@
                                     </div>
                                 </div>
                                 <!-- 성별 -->
-                                <div class="form-group row">
-                                    <label for="normal-field" class="col-md-4 form-control-label text-md-right" style="width: 24.333333%" >성별</label>
+                                <div class="form-group row" style="padding-top: 4px;">
+                            	<label for="normal-field" class="col-md-4 form-control-label text-md-right" style="width: 24.333333%" >성별</label>
+	                                <div class="row">
+                                         <div class="col-md-6">
+                                             <div class="radio abc-radio abc-radio-danger" style="padding-top: 7px; margin-bottom: 0px;">
+                                                 <input type="radio" name="radio2" id="radio3" value="option1">
+                                                 <label for="radio3">남자</label>
+                                                 <input type="radio" name="radio2" id="radio3" value="option1"  style="margin-left: 1.1rem">
+                                                 <label for="radio3" style="margin-left: 33px;" >여자</label>
+                                             </div>
+                                         </div>
+                                     </div>
                                 </div>
-                                <div class="checkbox abc-checkbox abc-checkbox-info abc-checkbox-circle">
-                                    <input type="checkbox" id="checkbox8" >
-                                    <input type="checkbox" id="checkbox8" >
+                                <!-- 웹사이트 주소 -->
+                                <div class="form-group row">
+                                    <label for="normal-field" class="col-md-4 form-control-label text-md-right" style="width: 24.333333%" >URL</label>
+                                    <div class="col-md-7" style="width: 67.333333%">
+                                        <input type="text" id="normal-field" class="form-control" placeholder="WEB SITE URL">
+                                    </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="normal-field" class="col-md-4 form-control-label text-md-right" style="width: 24.333333%" >Normal field</label>

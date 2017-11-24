@@ -9,7 +9,7 @@
 <body>
 	<%
 		// response.sendRedirect("global24.do");
-		response.sendRedirect("join.do");
+		 response.sendRedirect("join.do");
 	%>
 </body>
 </html>
