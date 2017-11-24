@@ -8,17 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class KhMemberController {
+public class GlobalMemberController {
 
 	private static final Logger logger 
-			= LoggerFactory.getLogger(KhMemberController.class);
+			= LoggerFactory.getLogger(GlobalMemberController.class);
 
-	@RequestMapping(value = "kakao.do", method={RequestMethod.GET, RequestMethod.POST})
-	public String login(Model model) {
-		logger.info("헬로우 컨트롤러 login");
-
-
-		return "kakao.tiles";
+	@RequestMapping(value = "join.do", method={RequestMethod.GET, RequestMethod.POST})
+	public String join(Model model) {
+		logger.info("GlobalMemberController join");
+		return "join.tiles";
 	}
 
 }

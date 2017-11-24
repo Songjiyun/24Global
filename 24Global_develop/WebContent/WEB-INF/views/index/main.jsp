@@ -4,7 +4,6 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://apis.daum.net/search/web"></script>
 <fmt:requestEncoding value="utf-8"/>
 
 <div class="content-wrap">

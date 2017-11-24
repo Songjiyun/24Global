@@ -23,7 +23,8 @@
 <tiles:insertAttribute name="main"/>
 
 <!-- JavaScript영역(페이지마다 조금씩 다름) -->
-<tiles:insertAttribute name="jsAria"/>
+<tiles:insertAttribute name="CommonjsAria"/>
+<tiles:insertAttribute name="PagejsAria"/>
 
 </body>
 </html>

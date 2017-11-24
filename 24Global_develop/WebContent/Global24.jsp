@@ -8,7 +8,8 @@
 </head>
 <body>
 	<%
-		response.sendRedirect("global24.do");
+		// response.sendRedirect("global24.do");
+		response.sendRedirect("join.do");
 	%>
 </body>
 </html>

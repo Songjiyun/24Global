@@ -15,15 +15,10 @@
 	</definition>
 	
 	<!-- 시세알림서비스 -->
-	<definition name="marketPrice.tiles" extends="index.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/MarketPrice/MarketPrice.jsp" />
+	<definition name="join.tiles" extends="index.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/Member/join.jsp" />
+		<put-attribute name="PagejsAria" value="/WEB-INF/views/Member/jsAria.jsp" />
 	</definition>
-	
-	<!-- 커뮤니티 -->
-	<definition name="Comunity.tiles" extends="index.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/Comunity/Comunity.jsp" />
-	</definition>
-
 
 </tiles-definitions>
 
