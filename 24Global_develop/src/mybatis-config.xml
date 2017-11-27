@@ -9,8 +9,8 @@
 		<setting name="defaultExecutorType" value="REUSE" />
 	</settings>
 
-	<typeAliases>
+	<!-- <typeAliases>
 		<package name="global.com.model" />
-	</typeAliases><!-- -->
+	</typeAliases> -->
 
 </configuration>

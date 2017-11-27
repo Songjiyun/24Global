@@ -9,10 +9,6 @@
 <div class="content-wrap">
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
     <main id="content" class="content" role="main">
-        <!-- <ol class="breadcrumb">
-            <li></li>
-            <li class="active">Member Join</li>
-        </ol> -->
         <h1 class="page-title"><span class="fw-semi-bold">New Create Account</span></h1>
         <div class="row">
             <div class="col-lg-6" style="width: 100%;">
@@ -20,23 +16,32 @@
                     <header>
                         <div class="widget-controls">
                             <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
-                            <a href="#"><button type="reset" class="fa fa-refresh"></button></a>
+                            <a href="#" data-widgster="close"><i class="fa fa-refresh"></i></a>
                             <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
                         </div>
                     </header>
                     <div class="widget-body">
-                        <form class="form-horizontal" role="form">
+                        <p class="mb-xs">
+                            <button type="button" class="btn btn-primary btn-lg mb-xs">Large button</button>
+                            <button type="button" class="btn btn-secondary btn-lg mb-xs">Large button</button>
+                        </p>
+                    </div>
+                    
+                    <div class="widget-body" id="makeAccountform">
+                        <form class="form-horizontal" role="form" id="join">
                             <fieldset>
-                                <legend><strong>Horizontal</strong> form</legend>
+                                <legend>
+                                	<strong>기업 회원가입</strong>
+                               	</legend>
                                 <!-- 아이디 -->
                                 <div class="form-group row">
                                     <label for="normal-field" class="col-md-4 form-control-label text-md-right" style="width: 24.333333%" >
-                                    	아이디
+                                    	아이디 (*)
                                    	</label>
                                     <div class="col-md-7" style="width: 67.333333%">
                                     	<div style="margin-bottom: 5px;">
 	                                        <div style="width: 100%;">
-	                                        	<input type="text" id="normal-field" class="form-control" placeholder="ID">
+	                                        	<input type="text" id="normal-field" class="form-control" name="u_id">
 	                                        </div>
                                         </div>
                                         <div class="widget-body"><!-- ID 중복여부 체크 -->
@@ -47,61 +52,88 @@
 							                    <span class="fw-semi-bold">사용불가 :</span> 이미 사용중인 아이디입니다.
 							                </div>
 							            </div>
+							            <!-- ID 중복여부체크 -->
+							            <script type="text/javascript">
+							            	$('#makeId').hide();
+							            	$('#no-makeId').hide();
+							            	
+							            	$('[name=u_id]').keyup(function () {
+							            		var testinput = $('[name=u_id]').val();
+							            		$.ajax({
+								                    type : "POST",
+								                    data : { 
+								                       "u_id"  : $('[name="u_id"]').val(),
+								                    },
+								                    url : "./checkId.do",
+								                    success : function(data) {
+								                    	var confirm = data;
+								                    	if(confirm == 'okay'){
+								                    		$('#makeId').show();
+								                    		$('#no-makeId').hide();
+								                    	}else {
+								                    		$('#no-makeId').show();
+								                    		$('#makeId').hide();
+								                    	}
+								                    },
+								                    error : function(status, error) {
+								                       alert("통신불가");
+								                    }
+								                 });
+											});
+							            </script>
                                     </div>
                                 </div>
                                 <!-- 패스워드 -->
                                 <div class="form-group row">
-                                    <label class="col-md-4 control-label text-md-right" for="password-field" style="width: 24.333333%" >패스워드</label>
+                                    <label class="col-md-4 control-label text-md-right" for="password-field" style="width: 24.333333%" >패스워드 (*)</label>
                                     <div class="col-md-7" style="width: 67.333333%">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" id="password-field" placeholder="패스워드">
+                                            <input type="password" class="form-control" id="password-field" name="u_pw" placeholder="패스워드">
                                         </div>
                                     </div>
                                 </div>
                                 <!-- 패스워드 재확인 -->
                                 <div class="form-group row">
-                                    <label class="col-md-4 control-label text-md-right" for="password-field" style="width: 24.333333%" >패스워드 재확인</label>
+                                    <label class="col-md-4 control-label text-md-right" for="password-field" style="width: 24.333333%" >패스워드 재확인 (*)</label>
                                     <div class="col-md-7" style="width: 67.333333%">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" id="password-field" placeholder="패스워드 재확인">
+                                            <input type="password" class="form-control" id="passwordtype" placeholder="패스워드 재확인" name="replayconfirmPassword">
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group row" id="dialogForPassword">
+                                	<input type="text" readonly style="border: 0px; width:74.333333%; float: right;" name="passwordmessage">
+                                </div>
+                                <!-- 패스워드 일치여부 -->
+                                <script type="text/javascript">
+                                	$('#dialogForPassword').hide();
+                                	var confirmpassword = "";
+                                	$('[name=u_pw]').focusout(function () {
+                                		confirmpassword = $('[name=u_pw]').val();
+                                	});
+                                	$('[name=replayconfirmPassword]').keyup(function () {
+                                		var replayconfirmPassword = $('[name=replayconfirmPassword]').val();
+                                		if(confirmpassword != replayconfirmPassword){
+                                			$('#dialogForPassword').show();
+                                			$('[name=passwordmessage]').val('일치하지 않습니다.');
+                                		}else{
+                                			$('#dialogForPassword').show();
+                                			$('[name=passwordmessage]').val('일치합니다.');
+                                		}
+                                	});
+                                </script>
                                 <!-- 이름 -->
                                 <div class="form-group row">
                                     <label for="prepended-input" class="col-md-4 control-label text-md-right" style="width: 24.333333%" >
-                                    	이&nbsp;&nbsp;&nbsp;름
+                                    	이&nbsp;&nbsp;&nbsp;름 (*)
                                    	</label>
                                     <div class="col-md-7" style="width: 67.333333%">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input id="prepended-input" class="form-control" size="16" type="text" placeholder="Username">
+                                            <input id="prepended-input" class="form-control" size="16" type="text" name="u_name">
                                         </div>
-                                    </div>
-                                </div>
-                                <!-- 닉네임 -->
-                                <div class="form-group row">
-                                    <label for="normal-field" class="col-md-4 form-control-label text-md-right" style="width: 24.333333%" >
-                                    	닉네임
-                                   	</label>
-                                    <div class="col-md-7" style="width: 67.333333%">
-                                        <input type="text" id="normal-field" class="form-control" placeholder="Nick Name">
-                                    </div>
-                                </div>
-                                <!-- 이메일 -->
-                                <div class="form-group row">
-                                    <label for="normal-field" class="col-md-4 form-control-label text-md-right" style="width: 24.333333%" >이메일</label>
-                                    <div class="col-md-7" style="width: 67.333333%">
-                                        <input type="text" id="Email" class="form-control">
-                                    </div>
-                                </div>
-                                <!-- 휴대폰 번호 -->
-                                <div class="form-group row">
-                                    <label for="normal-field" class="col-md-4 form-control-label text-md-right" style="width: 24.333333%" >전화번호</label>
-                                    <div class="col-md-7" style="width: 67.333333%">
-                                        <input type="text" id="phone" class="form-control">
                                     </div>
                                 </div>
                                 <!-- 성별 -->
@@ -110,51 +142,66 @@
 	                                <div class="row">
                                          <div class="col-md-6">
                                              <div class="radio abc-radio abc-radio-danger" style="padding-top: 7px; margin-bottom: 0px;">
-                                                 <input type="radio" name="radio2" id="radio3" value="option1">
+                                                 <input type="radio" name="u_gender" id="radio3" value="남자">
                                                  <label for="radio3">남자</label>
-                                                 <input type="radio" name="radio2" id="radio3" value="option1"  style="margin-left: 1.1rem">
+                                                 <input type="radio" name="u_gender" id="radio3" value="여자"  style="margin-left: 1.1rem">
                                                  <label for="radio3" style="margin-left: 33px;" >여자</label>
                                              </div>
                                          </div>
                                      </div>
                                 </div>
-                                <!-- 웹사이트 주소 -->
+                                <!-- 닉네임 -->
                                 <div class="form-group row">
-                                    <label for="normal-field" class="col-md-4 form-control-label text-md-right" style="width: 24.333333%" >URL</label>
+                                    <label for="normal-field" class="col-md-4 form-control-label text-md-right" style="width: 24.333333%" >
+                                    	닉네임 (*)
+                                   	</label>
                                     <div class="col-md-7" style="width: 67.333333%">
-                                        <input type="text" id="normal-field" class="form-control" placeholder="WEB SITE URL">
+                                        <input type="text" id="normal-field" class="form-control" placeholder="Nick Name" name="u_nickname">
                                     </div>
                                 </div>
+                                <!-- 이메일 -->
                                 <div class="form-group row">
-                                    <label for="normal-field" class="col-md-4 form-control-label text-md-right" style="width: 24.333333%" >Normal field</label>
+                                    <label for="normal-field" class="col-md-4 form-control-label text-md-right" style="width: 24.333333%" >이메일</label>
                                     <div class="col-md-7" style="width: 67.333333%">
-                                        <input type="text" id="normal-field" class="form-control" placeholder="May have placeholder">
+                                        <input type="text" id="Email" class="form-control" name="u_email">
                                     </div>
                                 </div>
+                                <!-- 휴대폰 번호 -->
                                 <div class="form-group row">
-                                    <label class="col-md-4 control-label text-md-right" for="transparent-input" style="width: 24.333333%" >
-                                        Append Transparent
-                                    </label>
+                                    <label for="normal-field" class="col-md-4 form-control-label text-md-right" style="width: 24.333333%" >전화번호</label>
                                     <div class="col-md-7" style="width: 67.333333%">
-                                        <div class="input-group input-group-transparent">
-                                            <input id="transparent-input" class="form-control" type="text">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-camera"></i>
-                                            </span>
-                                        </div>
+                                        <input type="text" id="phone" class="form-control" name="u_phone">
                                     </div>
                                 </div>
                             </fieldset>
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-md-offset-4 col-md-7">
-                                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                                        <button type="button" class="btn btn-inverse">Cancel</button>
+                                        <button class="btn btn-primary" id="confirmjoin">회원가입</button>
+                                        <button type="reset" class="btn btn-inverse">취소</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
+                        <!-- 폼 빈칸 -->
+                        <script type="text/javascript">
+                        $('#confirmjoin').click(function () {
+	                        formCheck();
+						});
+						function formCheck() {
+							$.each(["u_id", "u_pw", "u_name", "u_nickname", "u_phone"], function( i, joinObject ){
+								var joinObjects = $('[name='+joinObject+']').val();
+								if(joinObjects == ""){
+									$('[name='+joinObject+']').focus();
+								};
+	                       	});
+						};
+                        </script>
                     </div>
+                    <!-- 기업 / 개인 -->
+                    <script type="text/javascript">
+                    	$('#makeAccountform').hide();
+                    </script>
                 </section>
             </div>
         </div>

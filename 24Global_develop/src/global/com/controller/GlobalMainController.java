@@ -12,8 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import global.com.model.MemberDto;
 import global.com.model.testDTO;
-import global.com.service.KhMemberService;
+import global.com.service.GlobalMemberService;
 
 @Controller
 public class GlobalMainController {
@@ -22,7 +23,7 @@ public class GlobalMainController {
 			= LoggerFactory.getLogger(GlobalMainController.class);
 	
 	@Autowired
-	KhMemberService khmemberservice;
+	GlobalMemberService khmemberservice;
 	
 	/**
 	 * main으로 이동 
@@ -31,10 +32,10 @@ public class GlobalMainController {
 	public String global24(Model model) throws Exception {
 		logger.info("GlobalMainController global24");
 		
-		List<testDTO> list = khmemberservice.test();
+		List<MemberDto> list = khmemberservice.test();
 		for (int i = 0; i < list.size(); i++) {
-			testDTO dto = new testDTO();
-			System.out.println("test table : " + list.get(i).toString());
+			MemberDto dto = new MemberDto();
+			System.out.println("USER table : " + list.get(i).toString());
 		}
 		return "index.tiles";
 	}

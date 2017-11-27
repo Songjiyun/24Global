@@ -14,12 +14,16 @@
 		<put-attribute name="PagejsAria" value="/WEB-INF/views/index/jsAria.jsp" />
 	</definition>
 	
-	<!-- 시세알림서비스 -->
+	<!-- 회원가입 -->
 	<definition name="join.tiles" extends="index.tiles">
 		<put-attribute name="main" value="/WEB-INF/views/Member/join.jsp" />
 		<put-attribute name="PagejsAria" value="/WEB-INF/views/Member/jsAria.jsp" />
 	</definition>
 
+	<!-- 로그인 -->
+	<definition name="login.tiles" template="/WEB-INF/views/Member/login.jsp">
+	</definition>
+	
 </tiles-definitions>
 
 

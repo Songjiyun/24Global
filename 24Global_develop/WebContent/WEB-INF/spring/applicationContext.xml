@@ -24,12 +24,6 @@
 		<beans:property name="url" value="${jdbc.url}"/>
 		<beans:property name="username" value="${jdbc.username}"/>
 		<beans:property name="password" value="${jdbc.password}"/>
-		<!-- <beans:property name="initialSize" value="${jdbc.initialSize}"/>
-		<beans:property name="maxActive" value="${jdbc.maxActive}"/>
-		<beans:property name="minIdle" value="${jdbc.initialSize}"/>
-		<beans:property name="maxWait" value="3000"/>
-		<beans:property name="poolPreparedStatements" value="true"/>
-		<beans:property name="maxOpenPreparedStatements" value="50"/>	 -->
 	</beans:bean>
 	
 	<!-- DB 설정 (MyBatis == iBatis (framework))-->
