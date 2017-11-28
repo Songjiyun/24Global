@@ -15,11 +15,21 @@
 	</definition>
 	
 	<!-- 회원가입 -->
-	<definition name="join.tiles" extends="index.tiles">
-		<put-attribute name="main" value="/WEB-INF/views/Member/join.jsp" />
+	<definition name="checkStatus.tiles" extends="index.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/Member/checkStatus.jsp" />
 		<put-attribute name="PagejsAria" value="/WEB-INF/views/Member/jsAria.jsp" />
 	</definition>
 
+	<definition name="companyJoin.tiles" extends="index.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/Member/companyJoin.jsp" />
+		<put-attribute name="PagejsAria" value="/WEB-INF/views/Member/jsAria.jsp" />
+	</definition>
+	
+	<definition name="personJoin.tiles" extends="index.tiles">
+		<put-attribute name="main" value="/WEB-INF/views/Member/personJoin.jsp" />
+		<put-attribute name="PagejsAria" value="/WEB-INF/views/Member/jsAria.jsp" />
+	</definition>
+	
 	<!-- 로그인 -->
 	<definition name="login.tiles" template="/WEB-INF/views/Member/login.jsp">
 	</definition>

@@ -56,7 +56,7 @@
                             <div class="clearfix">
                                 <div class="btn-toolbar pull-xs-right"
                                      style="float: none !important; text-align: center;">
-                                    <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='join.do'">회원가입</button>
+                                    <button type="button" class="btn btn-secondary btn-sm" onclick="location.href='checkStatus.do'">회원가입</button>
                                     <a class="btn btn-inverse btn-sm" href="index.html">로그인</a>
                                 </div>
                             </div>
@@ -69,10 +69,6 @@
                                         </div>
                                     </div>
                                 </div>
-<!-- 
-                                <div class="col-md-6 col-md-pull-6">
-                                    <a class="mr-n-lg" href="#">Trouble with account?</a>
-                                </div> -->
                             </div>
                         </form>
                     </div>
@@ -81,7 +77,7 @@
         </div>
     </main>
     <footer class="page-footer">
-        2014 &copy; Sing. Admin Dashboard Template.
+        2017 &copy; 24Global Comunity
     </footer>
 </div>
 <!-- The Loader. Is shown when pjax happens -->

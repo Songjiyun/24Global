@@ -42,6 +42,12 @@ public class GlobalMemberController {
 		}
 	}
 	
+	@RequestMapping(value = "checkStatus.do", method={RequestMethod.GET, RequestMethod.POST})
+	public String checkStatus(Model model) throws Exception {
+		logger.info("GlobalMemberController checkStatus");
+		return "checkStatus.tiles";
+	}
+	
 	@RequestMapping(value = "join.do", method={RequestMethod.GET, RequestMethod.POST})
 	public String join(Model model) throws Exception {
 		logger.info("GlobalMemberController join");

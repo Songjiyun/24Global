@@ -13,25 +13,25 @@
         <div class="row">
             <div class="col-lg-6" style="width: 100%;">
                 <section class="widget">
-                    <header>
-                        <div class="widget-controls">
-                            <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
-                            <a href="#" data-widgster="close"><i class="fa fa-refresh"></i></a>
-                            <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
-                        </div>
-                    </header>
                     <div class="widget-body">
-                        <p class="mb-xs">
-                            <button type="button" class="btn btn-primary btn-lg mb-xs">Large button</button>
-                            <button type="button" class="btn btn-secondary btn-lg mb-xs">Large button</button>
+                        <p class="mb-xs" style="text-align: center;">
+                            <button type="button" class="btn btn-primary btn-lg mb-xs"
+                            	style="width: 17rem; height: 66px;" id="person">개인</button>
+                            <button type="button" class="btn btn-secondary btn-lg mb-xs"
+                            style="width: 17rem; height: 66px;" id="company">기업</button>
                         </p>
                     </div>
-                    
+                    <!-- 개인 / 기업별 회원가입 -->
+                    <script type="text/javascript">
+                    $('#person').click(function () {
+						$('#makeAccountform').show();
+					});
+                    </script>
                     <div class="widget-body" id="makeAccountform">
                         <form class="form-horizontal" role="form" id="join">
                             <fieldset>
                                 <legend>
-                                	<strong>기업 회원가입</strong>
+                                	<strong>기업 회원가입<input type="text" value="기업 회원가입"></strong>
                                	</legend>
                                 <!-- 아이디 -->
                                 <div class="form-group row">
